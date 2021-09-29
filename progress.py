@@ -4,10 +4,6 @@ from flask import Flask, make_response, redirect, render_template, request, send
 from fontTools.ttLib import TTFont
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get(
-    "SECRET_KEY", "secret_l801#+#a&^1mz)_p&qyq51j51@20_74c-xi%&i)b*u_dt^2=2key"
-)
-
 
 def get_progress_color(progress, scale):
     ratio = progress / scale
@@ -81,7 +77,7 @@ def download(filename):
 
 @app.route("/")
 def redirect_to_github():
-    return redirect("https://github.com/fredericojordan/progress-bar", code=302)
+    return redirect("https://github.com/tuchengpanghu/progress-bar", code=302)
 
 
 if __name__ == "__main__":
