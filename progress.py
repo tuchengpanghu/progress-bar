@@ -21,6 +21,7 @@ def get_template_fields(progress):
     cmap = font['cmap']
     t = cmap.getcmap(3, 1).cmap
     s = font.getGlyphSet()
+    units_per_em = font['head'].unitsPerEm
     padding = 8
 
     title = request.args.get("title")
@@ -44,7 +45,7 @@ def get_template_fields(progress):
                 total += s[t[ord(c)]].width
             else:
                 total += s['.notdef'].width
-        total = total*float(pointSize)/2048
+        total = total * float(pointSize) / units_per_em
         return total + padding
 
     return {
